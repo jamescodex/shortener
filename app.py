@@ -37,5 +37,15 @@ def generate(address):
     return jsonify({"identifier": identifier, "shortened_url": shortened_url})
 
 
+@app.route("/<string:identifier>/")
+def fetch_original(identifier):
+    try:
+        url = client.query(
+            q.get(q.match(q.index("urls_by_identifier"), identifier)))
+    except:
+        abort(404)
+    return redirect(url["data"]["url"])
+
+
 if __name__ == "__main__":
     app.run(debug=True)
