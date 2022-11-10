@@ -20,7 +20,21 @@ def home():
     return "Hello World!"
 
 
+@app.route("/generate/<path:address>/")
+def generate(address):
+    identifier = generate_identifier()
+    if not (address.startswith("http://") or address.startswith("https://")):
+        address = "http://" + address
 
+    client.query(q.create(q.collection("urls"), {
+        "data": {
+            "identifier": identifier,
+            "url": address
+        }
+    }))
+
+    shortened_url = request.host_url + identifier
+    return jsonify({"identifier": identifier, "shortened_url": shortened_url})
 
 
 if __name__ == "__main__":
