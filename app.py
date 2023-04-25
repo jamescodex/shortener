@@ -19,22 +19,22 @@ def generate_identifier(n=6):
 def home():
     return "Hello World!"
 
+    # Links to generate address
+    @app.route("/generate/<path:address>/")
+    def generate(address):
+        identifier = generate_identifier()
+        if not (address.startswith("http://") or address.startswith("https://")):
+            address = "http://" + address
 
-@app.route("/generate/<path:address>/")
-def generate(address):
-    identifier = generate_identifier()
-    if not (address.startswith("http://") or address.startswith("https://")):
-        address = "http://" + address
+        client.query(q.create(q.collection("urls"), {
+            "data": {
+                "identifier": identifier,
+                "url": address
+            }
+        }))
 
-    client.query(q.create(q.collection("urls"), {
-        "data": {
-            "identifier": identifier,
-            "url": address
-        }
-    }))
-
-    shortened_url = request.host_url + identifier
-    return jsonify({"identifier": identifier, "shortened_url": shortened_url})
+        shortened_url = request.host_url + identifier
+        return jsonify({"identifier": identifier, "shortened_url": shortened_url})
 
 
 @app.route("/<string:identifier>/")
