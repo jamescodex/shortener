@@ -41,3 +41,15 @@ python url_shortener.py
 ```
 
 4. The application will prompt you with options to either shorten a URL or retrieve the original URL from a shortened link. Follow the on-screen instructions to perform the desired action.
+
+## Configuration
+
+You can customize the behavior of the URL shortener application by modifying the `config.py` file. Here are the available configuration options:
+
+- `BASE_URL`: The base URL for the shortened links. You can set this to your own domain or a preferred short link service.
+- `DB_PATH`: The path to the SQLite database file that stores the shortened URLs and their corresponding statistics.
+
+## Database
+
+The application uses an SQLite database to store the shortened URLs and their associated information. The database file is created automatically when you run the application for the first time.
+
