@@ -53,3 +53,14 @@ You can customize the behavior of the URL shortener application by modifying the
 
 The application uses an SQLite database to store the shortened URLs and their associated information. The database file is created automatically when you run the application for the first time.
 
+## License
+
+This project is licensed under the MIT License. Feel free to modify and distribute it according to your needs. See the [LICENSE](LICENSE) file for more information.
+
+## Acknowledgments
+
+This project was inspired by the need for a simple URL shortening solution and was developed using Python. Special thanks to the open-source community for providing the necessary tools and libraries.
+
+If you encounter any issues or have suggestions for improvements, please create a new issue on the [GitHub repository](https://github.com/your-username/url-shortener/issues).
+
+Happy URL shortening!
